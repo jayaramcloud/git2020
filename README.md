@@ -24,13 +24,13 @@ EOF
 
 Add AWS IAM Authenticator
 
-jay@hp:~$ curl -o aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.15.10/2020-02-22/bin/linux/amd64/aws-iam-authenticator
+jay@hp:$ curl -o aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.15.10/2020-02-22/bin/linux/amd64/aws-iam-authenticator
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
 100 33.6M  100 33.6M    0     0  16.9M      0  0:00:01  0:00:01 --:--:-- 16.9M
-jay@hp:~$ chmod +x ./aws-iam-authenticator
-jay@hp:~$ mkdir -p $HOME/bin && cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator && export PATH=$PATH:$HOME/bin
-jay@hp:~$ echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
+jay@hp:$ chmod +x ./aws-iam-authenticator
+jay@hp:$ mkdir -p $HOME/bin && cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator && export PATH=$PATH:$HOME/bin
+jay@hp:$ echo 'export PATH=$PATH:$HOME/bin' >> /.bashrc
 rm -rf aws-iam-authenticator
 Install Kubectl
  sudo snap install kubectl --classic
@@ -48,32 +48,32 @@ sudo cp terraform /usr/bin/
 rm -rf terraform
 
 
-jay@hp:~$ terraform  --version
+jay@hp:$ terraform  --version
 
 Get the Terraform AWS provider:
 
-jay@hp:~$mkdir eks
-jay@hp:~$cd eks/;ls
-jay@hp:~/eks$git clone https://github.com/terraform-providers/terraform-provider-aws.git
+jay@hp:$mkdir eks
+jay@hp:$cd eks/;ls
+jay@hp:/eks$git clone https://github.com/terraform-providers/terraform-provider-aws.git
 
 
-jay@hp:~$ cd terraform-provider-aws/examples/eks-getting-started/;ls
+jay@hp:$ cd terraform-provider-aws/examples/eks-getting-started/;ls
 eks-cluster.tf       outputs.tf    README.md     vpc.tf
 eks-worker-nodes.tf  providers.tf  variables.tf  workstation-external-ip.tf
 
-jay@hp:~/eks/terraform-provider-aws/examples/eks-getting-started$ ls
+jay@hp:/eks/terraform-provider-aws/examples/eks-getting-started$ ls
 eks-cluster.tf  eks-worker-nodes.tf  outputs.tf  providers.tf  README.md  variables.tf  vpc.tf  workstation-external-ip.tf
 
 Terraform - init , plan , apply and destroy
 
-jay@hp:~/eks/terraform-provider-aws/examples/eks-getting-started$ terraform init 
+jay@hp:/eks/terraform-provider-aws/examples/eks-getting-started$ terraform init 
 Initializing the backend...
 Initializing provider plugins...
 - Checking for available provider plugins...
 - Downloading plugin for provider "aws" (hashicorp/aws) 2.54.0...
 - Downloading plugin for provider "http" (hashicorp/http) 1.2.0...
 
-jay@hp:~/eks/terraform-provider-aws/examples/eks-getting-started$ terraform plan
+jay@hp:/eks/terraform-provider-aws/examples/eks-getting-started$ terraform plan
 Refreshing Terraform state in-memory prior to plan...
 The refreshed state will be used to calculate this plan, but will not be
 persisted to local or remote state storage.
@@ -96,7 +96,7 @@ can't guarantee that exactly these actions will be performed if
 
 
 
-jay@hp:~/eks/terraform-provider-aws/examples/eks-getting-started$ terraform apply
+jay@hp:/eks/terraform-provider-aws/examples/eks-getting-started$ terraform apply
 data.http.workstation-external-ip: Refreshing state...
 data.aws_availability_zones.available: Refreshing state...
 data.aws_region.current: Refreshing state...
@@ -127,23 +127,23 @@ Outputs:.............
 
 
 
-jay@hp:~$cd eks/terraform-provider-aws/examples/eks-getting-started
-jay@hp:~/eks/terraform-provider-aws/examples/eks-getting-started$ mkdir ~/.kube/
-jay@hp:~/eks/terraform-provider-aws/examples/eks-getting-started$ terraform output kubeconfig>~/.kube/config
-jay@hp:~/eks/terraform-provider-aws/examples/eks-getting-started$ less ~/.kube/config 
+jay@hp:$cd eks/terraform-provider-aws/examples/eks-getting-started
+jay@hp:/eks/terraform-provider-aws/examples/eks-getting-started$ mkdir /.kube/
+jay@hp:/eks/terraform-provider-aws/examples/eks-getting-started$ terraform output kubeconfig>/.kube/config
+jay@hp:/eks/terraform-provider-aws/examples/eks-getting-started$ less /.kube/config 
 
 
-jay@hp:~/eks/terraform-provider-aws/examples/eks-getting-started$ kubectl version
+jay@hp:/eks/terraform-provider-aws/examples/eks-getting-started$ kubectl version
 Client Version: version.Info{Major:"1", Minor:"17", GitVersion:"v1.17.3", GitCommit:"06ad960bfd03b39c8310aaf92d1e7c12ce618213", GitTreeState:"clean", BuildDate:"2020-02-12T13:43:46Z", GoVersion:"go1.13.7", Compiler:"gc", Platform:"linux/amd64"}
 
-jay@hp:~/eks/terraform-provider-aws/examples/eks-getting-started$ kubectl apply -f configmap.yml
+jay@hp:/eks/terraform-provider-aws/examples/eks-getting-started$ kubectl apply -f configmap.yml
 Warning: kubectl apply should be used on resource created by either kubectl create --save-config or kubectl apply
 configmap/aws-auth configured
-jay@hp:~/eks/terraform-provider-aws/examples/eks-getting-started$ kubectl get nodes
+jay@hp:/eks/terraform-provider-aws/examples/eks-getting-started$ kubectl get nodes
 NAME                                       STATUS   ROLES    AGE   VERSION
 ip-10-0-0-138.us-west-2.compute.internal   Ready    <none>   10m   v1.14.9-eks-1f0ca9
 
-jay@hp:~/eks/terraform-provider-aws/examples/eks-getting-started$ terraform destroy
+jay@hp:/eks/terraform-provider-aws/examples/eks-getting-started$ terraform destroy
 data.http.workstation-external-ip: Refreshing state...
 data.aws_availability_zones.available: Refreshing state...
 …..
@@ -158,4 +158,4 @@ aws_eks_cluster.demo: Destruction complete after 9m36s
 
 Destroy complete! Resources: 18 destroyed.
 
-jay@hp:~/eks/terraform-provider-aws/examples/eks-getting-started$ aws resourcegroupstaggingapi get-resources
+jay@hp:/eks/terraform-provider-aws/examples/eks-getting-started$ aws resourcegroupstaggingapi get-resources

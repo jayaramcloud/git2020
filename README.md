@@ -1,5 +1,6 @@
 #Terraform script for EKS
-#Terraform script for EKS#
+
+##Terraform script for EKS##
 
 Update the OS
 apt update -y && apt install -y unzip 2>&1 >/dev/null
